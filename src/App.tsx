@@ -1,36 +1,46 @@
 import React, { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getWeather } from "./conexion/Conexion";
-import { QueryWeatherParams } from "./types/Types";
-import { Title } from "./components/Title";
-import { Info } from "./components/Info";
-import { Icons } from "./assets/Icons";
+import { QueryWeatherParams, WeatherProps } from "./types/Types";
 import { SearchBar } from "./components/SearchBar";
+import { WeatherData } from "./components/WeatherData/WeatherData";
 
 export const App = () => {
-  const queryClient = useQueryClient();
-  const inputRef = useRef();
-  const [weatherData, setWeatherData] = useState();
   const [queryWeather, setQueryWeather] = useState<QueryWeatherParams>({
-    city: "london",
+    city: "italy",
   });
-  /*const { isLoading, data, error } = useQuery({
-    queryKey: ["weather"],
+
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["weather", queryWeather],
     queryFn: () => getWeather(queryWeather),
-  });*/
+  });
 
   return (
     <div className="app w-100 h-[100vh] flex justify-center items-center">
-      <div className="appContainer w-[80%] h-[80vh] bg-[var(--main)] rounded-[20px] shadow-md flex items-center justify-center gap-3">
-        <div className="flex flex-col gap-3">
+      <div className="appContainer w-[800px] h-[450px] bg-[var(--main)] rounded-[20px] shadow-md flex overflow-hidden p-5 gap-3">
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : error ? (
+          <div className="error">
+            An error occurred: {(error as Error).message}
+          </div>
+        ) : (
+          <WeatherData
+            main={data?.main}
+            weather={data?.weather}
+            name={data?.name}
+            wind={data?.wind}
+          />
+        )}
+        <div className="flex flex-col gap-7 flex-1 p-10">
           <SearchBar
-            onClick={(e) => {
-              console.log(e.current?.value);
+            onClick={(ref: React.RefObject<HTMLInputElement>) => {
+              setQueryWeather({
+                ...queryWeather,
+                city: ref.current?.value || "italy",
+              });
             }}
           />
-          <Title title="London" />
-          <Info Icon={Icons.Wind} data="125" split="/" format="km" />
-          <Info Icon={Icons.Temperature} data="34" format="°" />
         </div>
       </div>
     </div>

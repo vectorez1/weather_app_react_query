@@ -3,13 +3,13 @@ type InfoProps = {
   Icon: React.ComponentType<SVGProps>;
   data: string;
   split?: string;
-  format: string;
+  format?: string;
 };
 export const Info = ({ Icon, data, split, format }: InfoProps) => {
   return (
     <div className="info flex row gap-2 items-center">
-      <div className="icon bg-[var(--secondary)] w-[50px] h-[50px] flex items-center justify-center rounded-[40px]">
-        <Icon color="white" width="25px" />
+      <div className="icon bg-[var(--secondary)] w-[40px] h-[40px] flex items-center justify-center rounded-[40px]">
+        <Icon color="white" width="20px" />
       </div>
       <div className="data flex font-bold ">
         <p className="text-white">
