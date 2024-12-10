@@ -1,3 +1,8 @@
+:root {
+  --main: #66acfc;
+  --secondary: #09305d;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
