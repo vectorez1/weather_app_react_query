@@ -74,25 +74,6 @@ A React-based weather application that fetches and displays current weather data
 
 ---
 
-## File Structure
-
-```
-📂 src
-├── 📂 components
-│   ├── SearchBar.tsx           # Search input component
-│   ├── WeatherData.tsx         # Displays weather details
-│   ├── WeatherItemContainer.tsx # Recent searches display
-├── 📂 conexion
-│   └── Conexion.ts             # Handles API requests
-├── 📂 types
-│   └── Types.ts                # TypeScript interfaces for the app
-├── App.tsx                     # Main application component
-├── index.tsx                   # Entry point for React app
-└── styles.css                  # Custom styles
-```
-
----
-
 ## Usage
 
 1. Enter the name of a city in the search bar and press enter.
