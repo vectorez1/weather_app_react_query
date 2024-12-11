@@ -1,9 +1,9 @@
 import { SVGProps } from "../types/Types";
 type InfoProps = {
   Icon: React.ComponentType<SVGProps>;
-  data: string;
-  split?: string;
-  format?: string;
+  data: string | number;
+  split?: string | number;
+  format?: string | number;
 };
 export const Info = ({ Icon, data, split, format }: InfoProps) => {
   return (

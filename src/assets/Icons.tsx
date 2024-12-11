@@ -120,10 +120,34 @@ const Search = ({
   );
 };
 
+const Loading = ({
+  color = "black",
+  width = "800px",
+  height = "800px",
+}: SVGProps) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 87 78"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M62 39C62 51.7026 51.7025 62 39 62C26.2975 62 16 51.7026 16 39C16 26.2974 26.2975 16 39 16C46.8967 16 53.864 19.9796 58.0056 26.0428L51.6794 37H61.9143C61.9711 37.6591 62 38.3262 62 39ZM77.9496 37C77.983 37.6624 78 38.3292 78 39C78 60.5391 60.5391 78 39 78C17.4609 78 0 60.5391 0 39C0 17.4609 17.4609 0 39 0C49.7274 0 59.4432 4.33118 66.4943 11.3401L69 7L86.3206 37H77.9496Z"
+        fill={color}
+      />
+    </svg>
+  );
+};
+
 export const Icons = {
   Humidity,
   TemperatureLow,
   Temperature,
   Wind,
   Search,
+  Loading,
 };
