@@ -9,9 +9,7 @@ import { WeatherItemContainer } from "./components/WeatherItemContainer";
 export const App = () => {
   const [weatherData, setWeatherData] = useState<WeatherProps | null>(null);
   const [thing, setThing] = useState<Array<WeatherProps | null>>([]);
-  const [queryWeather, setQueryWeather] = useState<QueryWeatherParams>({
-    city: "italy",
-  });
+  const [queryWeather, setQueryWeather] = useState<QueryWeatherParams>({});
 
   const { isLoading, data, isError } = useQuery({
     queryKey: ["weather", queryWeather],
@@ -33,7 +31,7 @@ export const App = () => {
 
   return (
     <div className="app w-100 h-[100vh] flex justify-center items-center">
-      <div className="appContainer w-[800px] h-[450px] bg-[var(--main)] rounded-[20px] shadow-md flex overflow-hidden p-5 gap-3 border-solid border-[var(--secondary)] border-[2px] ">
+      <div className="appContainer flex justify-center w-[800px] h-[450px] bg-[var(--main)] rounded-[20px] shadow-md  overflow-hidden p-5 border-solid border-[var(--secondary)] border-[2px] ">
         <WeatherData
           isLoading={isLoading}
           data={data}
