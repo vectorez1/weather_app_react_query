@@ -9,7 +9,9 @@ import { WeatherItemContainer } from "./components/WeatherItemContainer";
 export const App = () => {
   const [weatherData, setWeatherData] = useState<WeatherProps | null>(null);
   const [thing, setThing] = useState<Array<WeatherProps | null>>([]);
-  const [queryWeather, setQueryWeather] = useState<QueryWeatherParams>({});
+  const [queryWeather, setQueryWeather] = useState<QueryWeatherParams>({
+    city: "Santo Domingo",
+  });
 
   const { isLoading, data, isError } = useQuery({
     queryKey: ["weather", queryWeather],
